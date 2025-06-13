@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: Wojciech
+      POSTGRES_PASSWORD: zaq123
+      POSTGRES_DB: db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - network
+
+  db2:
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: Wojciech
+      POSTGRES_PASSWORD: zaq123
+      POSTGRES_DB: db2
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data2:/var/lib/postgresql/data
+    networks:
+      - network
+      
+networks:
+  network:
+    driver: bridge
+    
+volumes:
+  postgres_data:
+  postgres_data2:
+    
+  
+    

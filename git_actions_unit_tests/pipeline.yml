@@ -1,0 +1,199 @@
+name: lab_7_417256_test
+
+on:
+  push:
+    branches:
+      - Lab7/417256
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    - name: Install libs for testing
+      run: |
+        pip  install pytest 
+    
+    - name: prepare environemnt 
+      run: |
+         cd ./Lab_7/env_417256 && python -m pip install -r requirements.txt
+      
+
+  test-dodawanie:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    - name: Install libs for testing
+      run: |
+        pip  install pytest 
+    
+    - name: prepare environemnt 
+      run: |
+         cd ./Lab_7/env_417256 && python -m pip install -r requirements.txt
+      
+    - name: Run test
+      run: |
+        cd ./Lab_7/env_417256 && pytest calculator_test.py::test_dodawanie
+  
+  test_odejmowanie:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    - name: Install libs for testing
+      run: |
+        pip  install pytest 
+    
+    - name: prepare environemnt 
+      run: |
+         cd ./Lab_7/env_417256 && python -m pip install -r requirements.txt
+      
+    - name: Run test
+      run: |
+        cd ./Lab_7/env_417256 && pytest calculator_test.py::test_odejmowanie
+  
+  test_mnozenie:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    - name: Install libs for testing
+      run: |
+        pip  install pytest 
+    
+    - name: prepare environemnt 
+      run: |
+         cd ./Lab_7/env_417256 && python -m pip install -r requirements.txt
+      
+    - name: Run test
+      run: |
+        cd ./Lab_7/env_417256 && pytest calculator_test.py::test_mnozenie
+  
+  test_dzielenie:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    - name: Install libs for testing
+      run: |
+        pip  install pytest 
+    
+    - name: prepare environemnt 
+      run: |
+         cd ./Lab_7/env_417256 && python -m pip install -r requirements.txt
+      
+    - name: Run test
+      run: |
+        cd ./Lab_7/env_417256 && pytest calculator_test.py::test_dzielenie
+  
+  test_maksimum:
+    runs-on: ubuntu-latest
+    needs: [build, test-dodawanie, test_odejmowanie, test_mnozenie, test_dzielenie]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    - name: Install libs for testing
+      run: |
+        pip  install pytest 
+    
+    - name: prepare environemnt 
+      run: |
+         cd ./Lab_7/env_417256 && python -m pip install -r requirements.txt
+      
+    - name: Run test
+      run: |
+        cd ./Lab_7/env_417256 && pytest calculator_test2.py::test_maksimum
+
+  test_minimum:
+    runs-on: ubuntu-latest
+    needs: [build, test-dodawanie, test_odejmowanie, test_mnozenie, test_dzielenie]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    - name: Install libs for testing
+      run: |
+        pip  install pytest 
+    
+    - name: prepare environemnt 
+      run: |
+         cd ./Lab_7/env_417256 && python -m pip install -r requirements.txt
+      
+    - name: Run test
+      run: |
+        cd ./Lab_7/env_417256 && pytest calculator_test2.py::test_minimum
+
+  test_srednia:
+    runs-on: ubuntu-latest
+    needs: [build, test-dodawanie, test_odejmowanie, test_mnozenie, test_dzielenie]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    - name: Install libs for testing
+      run: |
+        pip  install pytest 
+    
+    - name: prepare environemnt 
+      run: |
+         cd ./Lab_7/env_417256 && python -m pip install -r requirements.txt
+      
+    - name: Run test
+      run: |
+        cd ./Lab_7/env_417256 && pytest calculator_test2.py::test_srednia

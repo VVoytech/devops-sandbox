@@ -1,0 +1,14 @@
+services:
+  web:
+    build:
+      context: ./main
+      dockerfile: ../Docker/dockerfile
+    ports:
+      - "8080:5000"
+    develop:
+      watch:
+        - action: sync
+          path: ./main
+          target: /code
+  redis:
+    image: "redis:alpine"

@@ -1,0 +1,24 @@
+
+services: 
+  worker_1:
+    build:
+      context: .
+      
+    restart: always
+    tty: true
+  worker_2:
+    build:
+      context: .
+    
+    restart: always
+    tty: true
+  master:
+    build:
+      context: .
+      
+    restart: always
+    tty: true
+
+    
+  
+    
